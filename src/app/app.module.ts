@@ -12,6 +12,7 @@ import { FormcontrolloginComponent } from './formcontrollogin/formcontrollogin.c
 import { SuccessLoginComponent } from './success-login/success-login.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { CrudFormComponent } from './crud-form/crud-form.component';
 
 /*const appRoutes: Routes = [
   { path: 'crisis-center', component: CrisisListComponent },
@@ -23,7 +24,8 @@ import { RegisterComponent } from './register/register.component';
     FormcontrolloginComponent,
     SuccessLoginComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    CrudFormComponent
   ],
   imports: [
     BrowserModule,

@@ -8,13 +8,48 @@
        <h1 style="color: green">** Successfully Login **</h1>
       </div>
 
-    </div>
 
-    <div class="col-sm-3 col-md-4"></div>
-     <div class="col-sm-3 col-md-4">
-     	
-     	  <input class="btn btn-danger btn-block" type="submit" witdth="20px" value="Logout" (click)="logout()">
-     </div>
+     <div class="row">
+      <div class="col-sm-3 col-md-4"></div>
+      <div class="col-sm-3 col-md-4">
+      <div class="panel panel-primary">
+          <div class="panel-heading"> Add Users Form </div>
+            <div class="panel-body" width="50px">
+
+           <form class="form-horizontal"  [formGroup]="studentForm" (ngSubmit)="myStudentAddFormControl(studentForm.value)" >
+                  
+                  <p *ngIf="message" style="color: red; text-align: center;">{{message}}</p>
+                  
+                   <input type="text" class="form-control" placeholder="Student First name" name="sfname" formControlName="sfname"> 
+                   <br>
+
+                    <input type="text" class="form-control" placeholder="Student Last Name" name="slname" formControlName="slname"> 
+                    <br>
+
+                    <input type="text" class="form-control" placeholder="Student Email" name="semail" formControlName="semail"> 
+                    <br>
+
+                   <input type="text" class="form-control" placeholder="Username" name="susername" formControlName="susername"> 
+                    <br>
+
+                    <input type="text" class="form-control" placeholder="password" name="spassword" formControlName="spassword">
+                    <br>
+
+                    <input class="btn btn-primary btn-block" type="submit" value="Student Form">
+
+                    <input class="btn btn-danger btn-block" type="submit" witdth="20px" value="Back" (click)="openHomePage()">
+
+                </form>
+          </div>
+              <!--  </div>
+
+              </div> -->
+
+           
+            </div>
+      </div>
+
+      </div>
      
 
 </div>

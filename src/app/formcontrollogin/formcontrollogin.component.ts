@@ -32,7 +32,7 @@ export class FormcontrolloginComponent implements OnInit {
   		this.response = data;
       console.log(data);
   		if(data.status == 200){
-  			this.router.navigate(['/success'])
+  			this.router.navigate(['/crud'])
   		}else{
         this.message = data.msg;
         //this.router.navigate(['/']);
