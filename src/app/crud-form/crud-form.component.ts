@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { StudentService } from '../student.service';
 
 @Component({
   selector: 'app-crud-form',
@@ -8,9 +9,16 @@ import {Router} from '@angular/router';
 })
 export class CrudFormComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private studentService:StudentService) { }
+
+  student_data = [];
 
   ngOnInit() {
+
+    this.studentService.getStudents().subscribe((data: any) => {
+      this.student_data = data;
+    })
+
   }
 
   addStudents(){
@@ -19,6 +27,15 @@ export class CrudFormComponent implements OnInit {
 
   logout(){
   	this.router.navigate(['/']);
+  }
+
+  editStudentForm(stud_id){
+    console.log('stud id is -->', stud_id);
+
+    this.studentService.editStudData(stud_id).subscribe((data:any) => {
+      console.log('edit data is --->',data);
+      
+    })
   }
 
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subject, asapScheduler, pipe, of, from, interval, merge, fromEvent } from 'rxjs';
-
+import { StudentService } from '../student.service';
 
 @Component({
   selector: 'app-success-login',
@@ -11,7 +11,7 @@ import { Observable, Subject, asapScheduler, pipe, of, from, interval, merge, fr
 })
 export class SuccessLoginComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router , private studentService:StudentService) { }
 
   studentForm : FormGroup;
   message : '';
@@ -30,7 +30,14 @@ export class SuccessLoginComponent implements OnInit {
 
   myStudentAddFormControl(stud_data){
 
-  	console.log('Stud data is :', stud_data);
+    this.studentService.storeStudents(stud_data).subscribe((data:any) => {
+      if(data.status == 200){
+       // this.message = data.msg;
+       this.router.navigate(['/crud']);
+      }else{
+        this.message = data.msg;
+      }
+    });
   }
 
   openHomePage(){

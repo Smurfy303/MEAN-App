@@ -6,6 +6,7 @@ import { ROUTING } from './routing'
 import { RouterModule, Routes } from '@angular/router';
 
 import{ DataService } from './data.service';
+import{ StudentService } from './student.service';
 
 import { AppComponent } from './app.component';
 import { FormcontrolloginComponent } from './formcontrollogin/formcontrollogin.component';
@@ -34,7 +35,7 @@ import { CrudFormComponent } from './crud-form/crud-form.component';
     ReactiveFormsModule,
     ROUTING
   ],
-  providers: [DataService],
+  providers: [DataService, StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

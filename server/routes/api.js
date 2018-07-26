@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 var user_model = require('../models/user.js');
+var student_model = require('../models/student.js');
 
 /* GET api listing. */
 router.get('/', (req, res) => {
@@ -30,7 +31,6 @@ router.post('/login' , (req,res) => {
 
 router.post('/register' , (req,res) => {
 
-	console.log(req.body.fname);
 	user_model.checkEmailExist(req.body.email , (isEmailExist) => {
 
 			if(isEmailExist != ''){
@@ -48,4 +48,38 @@ router.post('/register' , (req,res) => {
 	})
 
 });
+
+
+router.post('/addStudData' ,(req,res) => {
+
+	student_model.saveStudents(req.body , (err, resData) => {
+
+		if(err)
+			res.json({'status' : 500, 'msg' : 'Something Went Wrong....!'})
+		else
+			res.json({'status' : 200, 'msg' : 'Stored Successfully'})
+	})
+});
+
+
+router.get('/getStudData' , (req,res) => {
+
+	student_model.getStudents((err , stds) => {
+		if(err) throw err;
+
+		res.send(stds);
+	})
+})
+
+
+router.get('/editStudent/:id' , (req,res) => {
+
+	var stud_id = req.params.id;
+	student_model.getStudentById(stud_id , (err, edit) => {
+		if(err) throw err;
+
+		res.send(edit);
+	})
+
+})
 module.exports = router;

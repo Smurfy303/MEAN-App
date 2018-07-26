@@ -23,44 +23,28 @@
   </div><br>
 
     <div class="row">
-    	  <h2>HTML Table</h2>
+    	  <h2>Student Data</h2>
 
 		<table>
 		  <tr>
-		    <th>Company</th>
-		    <th>Contact</th>
-		    <th>Country</th>
+		  	<th>Sr. No</th>
+		    <th>First Name</th>
+		    <th>Last Name</th>
+		    <th>Email Id</th>
+		    <th>Action </th>
 		  </tr>
-		  <tr>
-		    <td>Alfreds Futterkiste</td>
-		    <td>Maria Anders</td>
-		    <td>Germany</td>
+		  <tr *ngFor="let data of student_data">
+		  	<td>1</td>
+		    <td>{{data.sfname}}</td>
+		    <td>{{data.slname}}</td>
+		    <td>{{data.semail}}</td>
+		    <td>
+		    	<input class="btn btn-success" type="button" value="Edit" (click)="editStudentForm(data._id)">
+
+		    	&nbsp;&nbsp;&nbsp;<input class="btn btn-danger" type="button" value="Delete" (click)="openHomePage()">
+		    </td>
 		  </tr>
-		  <tr>
-		    <td>Centro comercial Moctezuma</td>
-		    <td>Francisco Chang</td>
-		    <td>Mexico</td>
-		  </tr>
-		  <tr>
-		    <td>Ernst Handel</td>
-		    <td>Roland Mendel</td>
-		    <td>Austria</td>
-		  </tr>
-		  <tr>
-		    <td>Island Trading</td>
-		    <td>Helen Bennett</td>
-		    <td>UK</td>
-		  </tr>
-		  <tr>
-		    <td>Laughing Bacchus Winecellars</td>
-		    <td>Yoshi Tannamuri</td>
-		    <td>Canada</td>
-		  </tr>
-		  <tr>
-		    <td>Magazzini Alimentari Riuniti</td>
-		    <td>Giovanni Rovelli</td>
-		    <td>Italy</td>
-		  </tr>
+		  
 		</table>
 
     </div>
