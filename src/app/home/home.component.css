@@ -1,0 +1,18 @@
+
+#mainNav[_ngcontent-c1] .nav-link[_ngcontent-c1] {
+    transition: none;
+    padding: 2rem 1.5rem;
+    color: red;
+    font-size: 20px;
+}
+
+.text-black-50[_ngcontent-c1] {
+    color: #343a40!important;
+    font-size: 15px;
+}
+
+.about-section[_ngcontent-c1] p[_ngcontent-c1] {
+    margin-bottom: 5rem;
+    font-size: 15px;
+
+}
