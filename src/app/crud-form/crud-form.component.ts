@@ -13,6 +13,7 @@ export class CrudFormComponent implements OnInit {
 
   student_data = [];
 
+
   ngOnInit() {
 
     this.studentService.getStudents().subscribe((data: any) => {
@@ -30,11 +31,16 @@ export class CrudFormComponent implements OnInit {
   }
 
   editStudentForm(stud_id){
-    console.log('stud id is -->', stud_id);
 
     this.studentService.editStudData(stud_id).subscribe((data:any) => {
-      console.log('edit data is --->',data);
-      
+      this.router.navigate(['/add']);
+
+    })
+  }
+
+  deleteStudent(stud_id){
+    this.studentService.deleteStudent(stud_id).subscribe((data:any) => {
+        console.log('in deleter component-->', data);
     })
   }
 

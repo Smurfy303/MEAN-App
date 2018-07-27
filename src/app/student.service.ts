@@ -7,22 +7,32 @@ import 'rxjs/add/operator/map';
   providedIn: 'root'
 })
 export class StudentService {
-
+  editData: any;
   constructor(private http:HttpClient) { }
 
   storeStudents(stud_data){
 
   	return this.http.post("http://localhost:3000/api/addStudData" , stud_data).map((response : any) =>
-  		response; )
+  		response );
   }
 
   getStudents(){
   	return this.http.get("http://localhost:3000/api/getStudData").map((response: any) => 
-  		response;)
+  		response);
   }
 
   editStudData(stud_id){
 
-  	return this.http.get("http://localhost:3000/api/editStudent/"+stud_id).map((response:any) =>
-  		response;}
+  	return this.http.get("http://localhost:3000/api/editStudent/"+stud_id).map((response:any) =>{
+    //  debugger;
+                    		this.editData = response[0]});
+                      }
+
+  deleteStudent(stud_id) {
+
+    return this.http.delete("http://localhost:3000/api/deleteStudent"+stud_id).map((response:any) => {
+      console.log('service response');
+    })
+  }
+
 }

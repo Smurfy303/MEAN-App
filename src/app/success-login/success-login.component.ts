@@ -10,8 +10,10 @@ import { StudentService } from '../student.service';
   styleUrls: ['./success-login.component.css']
 })
 export class SuccessLoginComponent implements OnInit {
-
-  constructor(private router:Router , private studentService:StudentService) { }
+  editStudent: any;
+  constructor(private router:Router , private studentService:StudentService) {
+    this.editStudent = studentService.editData;
+   }
 
   studentForm : FormGroup;
   message : '';
@@ -25,6 +27,18 @@ export class SuccessLoginComponent implements OnInit {
       susername: new FormControl('',Validators.required),
       spassword: new FormControl(),
     });
+
+    if(this.editStudent != undefined){
+
+        this.studentForm.patchValue({
+          sfname: this.editStudent.sfname,
+          slname : this.editStudent.sfname,
+          semail: this.editStudent.semail,
+          susername: this.editStudent.susername,
+          spassword: this.editStudent.spassword,
+        })
+      
+    }
 
   }
 

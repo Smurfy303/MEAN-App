@@ -29,3 +29,7 @@ module.exports.getStudents = function(callback){
 module.exports.getStudentById = function(stud_id , callback){
 	student_model.find({'_id' : stud_id} , callback);
 }
+
+module.exports.deleteStudentById = function(id , callback){
+	student_model.findOneAndRemove({'_id' : id} , callback);
+}
