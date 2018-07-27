@@ -84,7 +84,7 @@ router.get('/editStudent/:id' , (req,res) => {
 })
 
 
-router.delete('/deleteStudent/:id' , (req,res) => {
+router.get('/deleteStudent/:id' , (req,res) => {
 
 	var stud_id = req.params.id;
 	student_model.deleteStudentById(stud_id , (err, deleteData) => {
