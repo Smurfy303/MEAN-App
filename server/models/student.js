@@ -5,12 +5,11 @@ var stud_data = mongoose.Schema({
 
 	sfname : {type:String },
 	slname : {type:String},
-	semail : {type:String, index: { unique: true }},
+	semail : {type:String},
 	susername : {type:String},
 	spassword : {type:String},
 
 });
-
 
 var student_model = module.exports = mongoose.model('student' , stud_data);
 
@@ -32,4 +31,13 @@ module.exports.getStudentById = function(stud_id , callback){
 
 module.exports.deleteStudentById = function(id , callback){
 	student_model.findOneAndRemove({'_id' : id} , callback);
+}
+
+module.exports.checkEmailExist = function(email_id, callback){
+	student_model.find({'semail' : email_id}, callback);
+}
+
+module.exports.updateStudent = function(stud_data , callback){
+
+	student_model.findOneAndUpdate({'semail' : stud_data.semail}, stud_data, callback);
 }

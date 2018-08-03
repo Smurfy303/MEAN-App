@@ -30,13 +30,19 @@ export class FormcontrolloginComponent implements OnInit {
 
   	this.dataService.getFormControlLogin(login_data).subscribe((data : any) => {
   		this.response = data;
-      console.log(data);
+
   		if(data.status == 200){
-  			this.router.navigate(['/crud'])
+        //Shows dashboard to edit details via FormControl
+  			this.router.navigate(['/crud']);
+
+        //Shows new Dashboard to edit details via @Input
+        this.router.navigate(['/dashboard']);
+        
   		}else{
         this.message = data.msg;
         //this.router.navigate(['/']);
       }
+
   	})
 
   }

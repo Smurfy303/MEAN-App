@@ -17,6 +17,9 @@ export class SuccessLoginComponent implements OnInit {
 
   studentForm : FormGroup;
   message : '';
+  button_label = "Add Student Form";
+  action = "add";
+  email_label = false;
 
   ngOnInit() {
 
@@ -32,26 +35,46 @@ export class SuccessLoginComponent implements OnInit {
 
         this.studentForm.patchValue({
           sfname: this.editStudent.sfname,
-          slname : this.editStudent.sfname,
+          slname : this.editStudent.slname,
           semail: this.editStudent.semail,
           susername: this.editStudent.susername,
           spassword: this.editStudent.spassword,
-        })
-      
+        });
+
+         this.button_label = "Update Student Form";
+         this.action="update";
+         //this.email_label = true;
+
     }
 
   }
 
-  myStudentAddFormControl(stud_data){
+  myStudentAddFormControl(stud_data, action){
 
-    this.studentService.storeStudents(stud_data).subscribe((data:any) => {
-      if(data.status == 200){
-       // this.message = data.msg;
-       this.router.navigate(['/crud']);
-      }else{
-        this.message = data.msg;
-      }
+    if(action == "add"){
+
+      this.studentService.storeStudents(stud_data).subscribe((data:any) => {
+          if(data.status == 200){
+           // this.message = data.msg;
+           this.router.navigate(['/crud']);
+          }else{
+            this.message = data.msg;
+          }
     });
+
+    }else{
+
+       this.studentService.updateStudent(stud_data).subscribe((data:any) => {
+          if(data.status == 200){
+           // this.message = data.msg;
+           this.router.navigate(['/crud']);
+          }else{
+            this.message = data.msg;
+          }
+      });
+    }
+
+  
   }
 
   openHomePage(){

@@ -14,6 +14,8 @@ import { SuccessLoginComponent } from './success-login/success-login.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { CrudFormComponent } from './crud-form/crud-form.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardStudentComponent } from './dashboard-student/dashboard-student.component';
 
 /*const appRoutes: Routes = [
   { path: 'crisis-center', component: CrisisListComponent },
@@ -26,7 +28,9 @@ import { CrudFormComponent } from './crud-form/crud-form.component';
     SuccessLoginComponent,
     HomeComponent,
     RegisterComponent,
-    CrudFormComponent
+    CrudFormComponent,
+    DashboardComponent,
+    DashboardStudentComponent
   ],
   imports: [
     BrowserModule,

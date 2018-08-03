@@ -28,6 +28,7 @@
     "nodemon": "^1.18.3",
     "rxjs": "^6.2.2",
     "rxjs-compat": "^6.2.2",
+    "sweetalert": "^2.1.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

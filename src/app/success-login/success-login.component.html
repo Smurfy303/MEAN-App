@@ -16,7 +16,7 @@
           <div class="panel-heading"> Add Users Form </div>
             <div class="panel-body" width="50px">
 
-           <form class="form-horizontal"  [formGroup]="studentForm" (ngSubmit)="myStudentAddFormControl(studentForm.value)" >
+           <form class="form-horizontal"  [formGroup]="studentForm" (ngSubmit)="myStudentAddFormControl(studentForm.value, action)" >
                   
                   <p *ngIf="message" style="color: red; text-align: center;">{{message}}</p>
                   
@@ -35,7 +35,7 @@
                     <input type="text" class="form-control" placeholder="password" name="spassword" formControlName="spassword">
                     <br>
 
-                    <input class="btn btn-primary btn-block" type="submit" value="Student Form">
+                    <input class="btn btn-primary btn-block" type="submit" value="{{button_label}}">
 
                     <input class="btn btn-danger btn-block" type="submit" witdth="20px" value="Back" (click)="openHomePage()">
 

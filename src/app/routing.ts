@@ -5,6 +5,7 @@ import { FormcontrolloginComponent } from './formcontrollogin/formcontrollogin.c
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { CrudFormComponent } from './crud-form/crud-form.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 export const AppRoutes: Routes = [
@@ -12,7 +13,8 @@ export const AppRoutes: Routes = [
     { path: 'register' , component : RegisterComponent},
     { path: 'login' , component : FormcontrolloginComponent},
     { path: 'crud', component: CrudFormComponent },
-    { path: 'add', component: SuccessLoginComponent }
+    { path: 'add', component: SuccessLoginComponent },
+    { path: 'dashboard', component: DashboardComponent }
 ];
  
 export const ROUTING: ModuleWithProviders = RouterModule.forRoot(AppRoutes);

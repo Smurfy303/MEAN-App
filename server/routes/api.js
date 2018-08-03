@@ -52,14 +52,56 @@ router.post('/register' , (req,res) => {
 
 router.post('/addStudData' ,(req,res) => {
 
-	student_model.saveStudents(req.body , (err, resData) => {
+	student_model.checkEmailExist(req.body.semail , (err, ischeck) =>{
 
 		if(err)
-			res.json({'status' : 500, 'msg' : 'Something Went Wrong....!'})
-		else
-			res.json({'status' : 200, 'msg' : 'Stored Successfully'})
+			res.json({'status' : 500, 'msg' : 'Something went wrong...!'})
+		else if(ischeck.length != 0){
+			
+				res.json({'status' : 500, 'msg' : 'Email already exist...!'})
+			
+			}else{
+
+				student_model.saveStudents(req.body , (err, resData) => {
+
+					if(err)
+						res.json({'status' : 500, 'msg' : 'Something went wrong...!'})
+					else
+						res.json({'status' : 200, 'msg' : 'Stored Successfully'})
+				})			
+			}
 	})
+	
 });
+
+router.post('/updateStudent' , (req,res) => {
+
+	student_model.checkEmailExist(req.body.semail , (err, ischeck) =>{
+
+		if(err){
+			res.json({'status' : 500, 'msg' : 'Something went wrong...!'})
+		}
+
+		else if(ischeck.length !=0 ){
+
+			student_model.updateStudent(req.body , (err, updated) => {
+
+				if(err)
+					res.json({'status' : 500, 'msg' : 'Something went wrong...!'})
+				else if(updated){
+					res.json({'status' : 200, 'msg' : 'Stored Successfully'})
+				}else{
+					res.json({'status' : 500, 'msg' : 'Email Id does not Exist...!'})
+				}
+
+			}) 
+		
+
+		}else{
+			res.json({'status' : 500, 'msg' : 'Email Id does not exist...!'})
+		}
+	});
+})
 
 
 router.get('/getStudData' , (req,res) => {
@@ -84,7 +126,7 @@ router.get('/editStudent/:id' , (req,res) => {
 })
 
 
-router.get('/deleteStudent/:id' , (req,res) => {
+router.delete('/deleteStudent/:id' , (req,res) => {
 
 	var stud_id = req.params.id;
 	student_model.deleteStudentById(stud_id , (err, deleteData) => {

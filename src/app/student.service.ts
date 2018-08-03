@@ -24,15 +24,20 @@ export class StudentService {
   editStudData(stud_id){
 
   	return this.http.get("http://localhost:3000/api/editStudent/"+stud_id).map((response:any) =>{
-    //  debugger;
-                    		this.editData = response[0]});
-                      }
+      //  debugger;
+      this.editData = response[0]});
+  }
 
   deleteStudent(stud_id) {
 
-    return this.http.delete("http://localhost:3000/api/deleteStudent"+stud_id).map((response:any) => {
-      console.log('service response');
-    })
+    return this.http.delete("http://localhost:3000/api/deleteStudent/"+stud_id).map((response:any) => response);
   }
+
+  updateStudent(stud_data){
+    
+    return this.http.post("http://localhost:3000/api/updateStudent",stud_data).map((response:any) => response);
+    }
+
+  
 
 }
