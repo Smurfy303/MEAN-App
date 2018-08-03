@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subject, asapScheduler, pipe, of, from, interval, merge, fromEvent } from 'rxjs';
 import {Router} from '@angular/router';
 import { DataService } from '../data.service';
+import {Http, Headers, RequestOptions} from '@angular/http';
+
 
 @Component({
   selector: 'app-formcontrollogin',
@@ -30,21 +32,19 @@ export class FormcontrolloginComponent implements OnInit {
 
   	this.dataService.getFormControlLogin(login_data).subscribe((data : any) => {
   		this.response = data;
-
+      console.log('data--->', data);
   		if(data.status == 200){
         //Shows dashboard to edit details via FormControl
   			this.router.navigate(['/crud']);
 
         //Shows new Dashboard to edit details via @Input
-        this.router.navigate(['/dashboard']);
+        //this.router.navigate(['/dashboard']);
         
   		}else{
         this.message = data.msg;
         //this.router.navigate(['/']);
       }
-
   	})
-
   }
 
   openHomePage(){

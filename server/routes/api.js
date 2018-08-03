@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+var jwt = require('jsonwebtoken');
 var user_model = require('../models/user.js');
 var student_model = require('../models/student.js');
 
@@ -19,7 +19,16 @@ router.post('/login' , (req,res) => {
 		if(err) throw err;
 
 		if(data.length !=0){
-			res.json({'status' : 200, 'msg' : 'Login Successfully'});
+			var ts = {
+				'email':data[0].email,
+				'user_id':data[0]._id
+			}
+			var token = jwt.sign(ts, 'kiransecret' , { expiresIn: '1h' });
+			user_model.saveToken(token , data[0].email , (success) => {
+				
+				res.json({'status' : 200, 'msg' : 'Login Successfully', 'token': success.token});
+			})
+
 		}else{
 			res.json({'status' : 404, 'msg' : 'Invalid Username or Password'});
 		}
